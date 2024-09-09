@@ -1,1 +1,1 @@
-# trip-planner
+# Trip Planner
