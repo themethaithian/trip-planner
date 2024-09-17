@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import ImageUpload from "./imageUpload";
-import { DateRangePicker } from "@nextui-org/react";
+import { DateRangePicker } from "@nextui-org/date-picker";
 
 interface AccomodationProps {
   id: number;
