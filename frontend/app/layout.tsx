@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Trip Planner",
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={notosans.className}>{children}</body>
+      <body className={notosans.className}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
