@@ -1,16 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { TrashIcon } from "@heroicons/react/24/outline";
-import ImageUpload from "./imageUpload";
-import { DateRangePicker } from "@nextui-org/date-picker";
 
-interface AccomodationProps {
+interface RestaurantProps {
   id: number;
   onDelete?: (id: number, price: number) => void;
   onExport?: (price: number) => void;
 }
 
-const AccommodationForm: React.FC<AccomodationProps> = ({
+const RestaurantForm: React.FC<RestaurantProps> = ({
   id,
   onDelete,
   onExport,
@@ -57,21 +55,20 @@ const AccommodationForm: React.FC<AccomodationProps> = ({
               <div className="text-sm text-gray-400">ราคา {price || 0} บาท</div>
             </div>
             <ChevronDownIcon
-              className={`h-5 w-5 text-gray-400 transition-transform duration-300 group-hover/button:text-blue-500 ${
-                isExpanded ? "rotate-180" : ""
-              }`}
+              className={`h-5 w-5 text-gray-400 transition-transform duration-300 group-hover/button:text-blue-500 ${isExpanded ? "rotate-180" : ""
+                }`}
             />
           </button>
         </div>
 
         <div
-          className={`transition-[max-height] duration-300 ease-in-out overflow-hidden ${isExpanded ? "max-h-200" : "max-h-0"}`}
+          className={`transition-[max-height] duration-300 ease-in-out overflow-hidden ${isExpanded ? "max-h-96" : "max-h-0"}`}
         >
           <div className="p-4">
             <div className="space-y-2">
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  ชื่อที่พัก
+                  ชื่อร้านอาหาร
                 </label>
                 <input
                   type="text"
@@ -83,7 +80,7 @@ const AccommodationForm: React.FC<AccomodationProps> = ({
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  ราคาต่อคืน
+                  ยอดรวม
                 </label>
                 <input
                   type="number"
@@ -92,19 +89,6 @@ const AccommodationForm: React.FC<AccomodationProps> = ({
                   className="mt-1 block w-full border-gray-300 bg-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm p-2"
                   placeholder="กรอกราคา"
                 />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  วันที่เข้าพัก
-                </label>
-                <DateRangePicker className="max-w-xs" />
-                <div className="flex items-center space-x-4"></div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  เลือกรูปภาพ
-                </label>
-                <ImageUpload />
               </div>
             </div>
           </div>
@@ -120,4 +104,4 @@ const AccommodationForm: React.FC<AccomodationProps> = ({
   );
 };
 
-export default AccommodationForm;
+export default RestaurantForm;

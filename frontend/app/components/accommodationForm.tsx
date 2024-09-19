@@ -1,14 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { TrashIcon } from "@heroicons/react/24/outline";
+import ImageUpload from "./imageUpload";
+import { DateRangePicker } from "@nextui-org/date-picker";
 
-interface RestaurantProps {
+interface AccomodationProps {
   id: number;
   onDelete?: (id: number, price: number) => void;
   onExport?: (price: number) => void;
 }
 
-const RestaurantForm: React.FC<RestaurantProps> = ({
+const AccommodationForm: React.FC<AccomodationProps> = ({
   id,
   onDelete,
   onExport,
@@ -62,25 +64,30 @@ const RestaurantForm: React.FC<RestaurantProps> = ({
         </div>
 
         <div
-          className={`transition-[max-height] duration-300 ease-in-out overflow-hidden ${isExpanded ? "max-h-96" : "max-h-0"}`}
+          className={`transition-[max-height] duration-300 ease-in-out overflow-hidden ${isExpanded ? "max-h-200" : "max-h-0"}`}
         >
-          <div className="p-4">
-            <div className="space-y-2">
+          <div className="px-4 pb-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                ชื่อที่พัก
+              </label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="mt-1 block w-full border-gray-300 bg-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm p-2"
+                placeholder="กรอกชื่อที่พัก"
+              />
               <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  ชื่อร้านอาหาร
+                <label className="mt-2 block text-sm font-medium text-gray-700">
+                  วันที่เข้าพัก
                 </label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="mt-1 block w-full border-gray-300 bg-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm p-2"
-                  placeholder="กรอกชื่อที่พัก"
-                />
+                <DateRangePicker className="max-w-xs" />
+                <div className="flex items-center space-x-4"></div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">
-                  ราคา
+                <label className="mt-2 block text-sm font-medium text-gray-700">
+                  ยอดรวม
                 </label>
                 <input
                   type="number"
@@ -89,6 +96,12 @@ const RestaurantForm: React.FC<RestaurantProps> = ({
                   className="mt-1 block w-full border-gray-300 bg-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm p-2"
                   placeholder="กรอกราคา"
                 />
+              </div>
+              <div>
+                <label className="mt-2 block text-sm font-medium text-gray-700">
+                  เลือกรูปภาพ
+                </label>
+                <ImageUpload />
               </div>
             </div>
           </div>
@@ -104,4 +117,4 @@ const RestaurantForm: React.FC<RestaurantProps> = ({
   );
 };
 
-export default RestaurantForm;
+export default AccommodationForm;

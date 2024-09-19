@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Image from "next/image";
+import { Image } from "@nextui-org/image";
 import { PhotoIcon } from "@heroicons/react/24/outline";
 
 const ImageUpload: React.FC = () => {
@@ -24,16 +24,17 @@ const ImageUpload: React.FC = () => {
     <div className="mt-1 flex items-center space-x-4">
       {preview ? (
         <button
-          className="border border-1 rounded-full overflow-hidden flex items-center justify-center"
+          className="border-1 rounded-full overflow-hidden flex items-center justify-center"
           onClick={handleClick}
           style={{ width: "150px", height: "150px" }}
         >
           <Image
+            isZoomed
             src={preview}
             alt="Preview"
             className="object-cover"
-            width={100}
-            height={100}
+            width={150}
+            height={150}
           />
         </button>
       ) : (
